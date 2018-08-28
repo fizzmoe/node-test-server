@@ -23,9 +23,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
-    res.render('maintenance.hbs');
-});
+// UNCOMMENT THIS WHEN MAINTENANCE
+// app.use((req, res, next) => {
+//     res.render('maintenance.hbs');
+// });
 
 hbs.registerHelper('getCurrentYear', () => {
     return new Date().getFullYear();
@@ -37,6 +38,13 @@ app.get('/', (req, res) => {
     res.render('home.hbs', {
         pageTitle: 'Main Page',
         welcomeMessage: 'Welcome'
+    });
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Projects',
+        projectsInfo: 'Some projects list'
     });
 });
 
